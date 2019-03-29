@@ -1,0 +1,7 @@
+<ul class="threads">
+  <li *ngFor="let voz_thread of voz_threads">
+    <a routerLink="/thread/{{voz_thread.id}}">
+      <span class="badge">{{voz_thread.id}}</span> {{voz_thread.title}}
+    </a>
+  </li>
+</ul>
