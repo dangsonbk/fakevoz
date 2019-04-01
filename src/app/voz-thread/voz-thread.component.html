@@ -1,7 +1,8 @@
 <ul class="threads">
   <li *ngFor="let voz_thread of voz_threads">
     <a routerLink="/thread/{{voz_thread.id}}">
-      <span class="badge">{{voz_thread.id}}</span> {{voz_thread.title}}
+      <img class="thumbnail" src="{{voz_thread.thumbnail}}"/>
+      <span class="badge">{{voz_thread.id}}</span> {{voz_thread.title}} | {{voz_thread.box}}
     </a>
   </li>
 </ul>

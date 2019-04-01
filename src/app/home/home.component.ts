@@ -8,7 +8,7 @@ import { VozThreadService } from '../voz-thread.service';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-  voz_threads: VozThreads[] = [];
+  voz_threads: VozThreads;
 
   constructor(private vozThreadService: VozThreadService) { }
 
@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
 
   getThreads(): void {
     this.vozThreadService.getThreads()
-      .subscribe(voz_threads => this.voz_threads = voz_threads.slice(0, 5));
+      .subscribe(voz_threads => this.voz_threads = voz_threads["results"]);
   }
 }

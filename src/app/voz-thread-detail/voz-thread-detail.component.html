@@ -1,11 +1,10 @@
 <div *ngIf="voz_thread">
-  <h2>{{voz_thread.title | uppercase}} Details</h2>
-  <div><span>id: </span>{{voz_thread.id}}</div>
+  <h2>{{voz_thread.title | uppercase}}</h2>
+  <figure class="avatar avatar-xl" data-badge="8">
+    <img src="{{voz_thread.user_meta.photo_url}}">
+  </figure>
   <div>
-    <label>Description:
-      <p>{{voz_thread.description}}</p>
-    </label>
+    <p>{{voz_thread.raw}}</p>
   </div>
   <button (click)="goBack()">go back</button>
- 
 </div>

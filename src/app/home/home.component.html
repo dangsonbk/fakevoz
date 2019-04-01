@@ -1,9 +1,21 @@
-<!-- <h3>Sticky thread</h3> -->
-<h3>Top thread</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let voz_thread of voz_threads" class="col-1-4" routerLink="/thread/{{voz_thread.id}}">
-    <div class="module voz_thread">
-      <h4>{{voz_thread.title}}</h4>
+
+<div class="columns">
+  <div class="column col-3 col-md-6" *ngFor="let voz_thread of voz_threads">
+    <div class="card">
+      <div class="card-image" style="height:150px; overflow:hidden;">
+        <img src="{{voz_thread.thumbnail}}" class="img-responsive" style="top: -40%;position: relative;">
+      </div>
+      <div class="card-header">
+        <button class="btn btn-primary float-right"><i class="icon icon-plus"></i></button>
+        <div class="card-title h5"><a routerLink="/thread/{{voz_thread.id}}">{{voz_thread.title}}</a></div>
+        <div class="card-subtitle text-gray"><span class="chip" *ngFor="let hashtag of voz_thread.hashtags">{{hashtag}}</span></div>
+      </div>
+      <div class="card-body">
+        {{voz_thread.description}}
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary">...</button>
+      </div>
     </div>
-  </a>
+  </div>
 </div>

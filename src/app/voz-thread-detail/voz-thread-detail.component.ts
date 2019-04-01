@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VozThreads } from '../voz';
+import { VozThreads, VozThread } from '../voz';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -13,7 +13,7 @@ import { VozThreadService }  from '../voz-thread.service';
 })
 export class VozThreadDetailComponent implements OnInit {
 
-  @Input() voz_thread: VozThreads;
+  @Input() voz_thread: VozThread;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class VozThreadDetailComponent implements OnInit {
   getThread(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.vozThreadService.getThread(id)
-      .subscribe(voz_thread => this.voz_thread = voz_thread);
+      .subscribe(voz_thread => {this.voz_thread = voz_thread; console.log(voz_thread);});
   }
 
   goBack(): void {
