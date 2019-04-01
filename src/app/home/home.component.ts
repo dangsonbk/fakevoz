@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VozThread } from '../voz';
+import { VozThreads } from '../voz';
 import { VozThreadService } from '../voz-thread.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { VozThreadService } from '../voz-thread.service';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-  voz_threads: VozThread[] = [];
+  voz_threads: VozThreads[] = [];
 
   constructor(private vozThreadService: VozThreadService) { }
 

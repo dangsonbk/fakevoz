@@ -6,7 +6,7 @@ class Box {
     constructor(key: string, title: string) {}
 }
 
-export class VozThread {
+export class VozThreads {
     id: number;
     title: string;
     hashtags: Array<String>;
