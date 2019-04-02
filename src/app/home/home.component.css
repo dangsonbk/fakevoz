@@ -1,3 +1,11 @@
-.column {
-    padding-bottom: 10px;
+.post-item {
+    padding: 5px;
+    margin: 5px 0px 5px;
+    border: 1px dotted #444444;
+}
+.post-item:hover {
+    border: 1px solid #444444;
+}
+.tile-title {
+    line-height: 1.5;
 }

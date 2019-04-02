@@ -1,37 +1,64 @@
 
+<progress *ngIf="!voz_threads && !voz_error" class="progress" max="100"></progress>
+<div *ngIf="voz_error" class="empty">
+  <div class="empty-icon">
+    <img src="https://storage.googleapis.com/voz-next-assets/images/svg/img-under-construction.svg">
+  </div>
+  <p class="empty-title h5">Không thể tải được nội dung từ server voz.</p>
+  <p class="empty-subtitle">{{error.error}}</p>
+  <div class="empty-action">
+    <button class="btn btn-primary">Thử lại</button>
+  </div>
+</div>
 <div class="columns">
-  <div class="column col-3 col-md-6" *ngFor="let voz_thread of voz_threads">
-    <div class="card bg-dark">
-      <div class="card-image" style="height:150px; overflow:hidden;">
-        <img [src]="voz_thread.thumbnail" class="img-responsive" style="top: -40%;position: relative;">
+  <div class="column col-9 col-md-12">
+    <div class="columns post-item" *ngFor="let voz_thread of voz_threads">
+      <div class="column col-1">
+        <img *ngIf="voz_thread.thumbnail" [src]="voz_thread.thumbnail" class="img-responsive">
+        <img *ngIf="!voz_thread.thumbnail" src="https://sdl-stickershop.line.naver.jp/products/0/0/1/1276810/android/stickers/11220080.png;compress=true" class="img-responsive">
       </div>
-      <div class="card-header">
-        <div class="card-title h5"><a class="text-secondary" routerLink="/thread/{{voz_thread.id}}">{{voz_thread.title}}</a></div>
-        <div>
-          <div class="tile tile-centered">
-            <div class="tile-icon">
-              <img [src]="voz_thread.user_meta.photo_url" class="avatar avatar-md">
-            </div>
-            <div class="tile-content">
-              <div class="tile-title"><a href="#">{{voz_thread.user_meta.display_name}} </a><small> {{voz_thread.created}}</small></div>
-              <small class="tile-subtitle text-gray"><i class="icon icon-message"></i> {{voz_thread.total_comments}} · {{voz_thread.box.title}}</small>
-            </div>
-            <div class="tile-action">
-              <button class="btn btn-link">
-                <i class="icon icon-more-vert"></i>
-              </button>
+      <div class="column col-11">
+        <a routerLink="/thread/{{voz_thread.id}}">{{voz_thread.title}}</a>
+        <div><span class="text-light">{{voz_thread.description}}</span></div>
+        <div class="tile tile-centered">
+          <div class="tile-icon">
+            <img *ngIf="voz_thread.user_meta.photo_url" [src]="voz_thread.user_meta.photo_url" class="avatar avatar-md">
+            <img *ngIf="!voz_thread.user_meta.photo_url" src="https://sdl-stickershop.line.naver.jp/products/0/0/1/1276810/android/stickers/11220117.png;compress=true" class="avatar avatar-md">
+          </div>
+          <div class="tile-content">
+            <div class="tile-title"><a href="#">{{voz_thread.user_meta.display_name}} </a><small> {{voz_thread.created | date:'short'}}</small></div>
+            <small class="tile-subtitle text-gray"><i class="icon icon-message"></i> {{voz_thread.total_comments}} · {{voz_thread.box.title}}</small>
+            <span class="chip text-dark" *ngFor="let hashtag of voz_thread.hashtags">{{hashtag}}</span>
+          </div>
+          <div class="tile-action">
+            <div class="dropdown">
+              <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+                Xem trên <i class="icon icon-caret"></i>
+              </a>
+              <ul class="menu">
+                <li class="menu-item"><a href="#">next.voz.vn</a></li>
+                <li class="menu-item"><a href="#">voz.vn</a></li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="card-subtitle text-secondary"><span class="chip bg-gray" *ngFor="let hashtag of voz_thread.hashtags">{{hashtag}}</span></div>
       </div>
-      <div class="card-body">
-        {{voz_thread.description}}
-      </div>
-      <!-- <div class="card-footer">
-        <button class="btn btn-primary">...</button>
-        <button class="btn btn-primary float-right"><i class="icon icon-plus"></i></button>
-      </div> -->
     </div>
+  </div>
+  <div class="column col-3 hide-md">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Comments</div>
+      </div>
+      <div class="panel-nav">
+          <!-- navigation components: tabs, breadcrumbs or pagination -->
+      </div>
+      <div class="panel-body">
+          <!-- contents -->
+      </div>
+      <div class="panel-footer">
+          <!-- buttons or inputs -->
+      </div>
+      </div>
   </div>
 </div>
