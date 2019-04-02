@@ -1,21 +1,37 @@
 
 <div class="columns">
   <div class="column col-3 col-md-6" *ngFor="let voz_thread of voz_threads">
-    <div class="card">
+    <div class="card bg-dark">
       <div class="card-image" style="height:150px; overflow:hidden;">
-        <img src="{{voz_thread.thumbnail}}" class="img-responsive" style="top: -40%;position: relative;">
+        <img [src]="voz_thread.thumbnail" class="img-responsive" style="top: -40%;position: relative;">
       </div>
       <div class="card-header">
-        <button class="btn btn-primary float-right"><i class="icon icon-plus"></i></button>
-        <div class="card-title h5"><a routerLink="/thread/{{voz_thread.id}}">{{voz_thread.title}}</a></div>
-        <div class="card-subtitle text-gray"><span class="chip" *ngFor="let hashtag of voz_thread.hashtags">{{hashtag}}</span></div>
+        <div class="card-title h5"><a class="text-secondary" routerLink="/thread/{{voz_thread.id}}">{{voz_thread.title}}</a></div>
+        <div>
+          <div class="tile tile-centered">
+            <div class="tile-icon">
+              <img [src]="voz_thread.user_meta.photo_url" class="avatar avatar-md">
+            </div>
+            <div class="tile-content">
+              <div class="tile-title"><a href="#">{{voz_thread.user_meta.display_name}} </a><small> {{voz_thread.created}}</small></div>
+              <small class="tile-subtitle text-gray"><i class="icon icon-message"></i> {{voz_thread.total_comments}} · {{voz_thread.box.title}}</small>
+            </div>
+            <div class="tile-action">
+              <button class="btn btn-link">
+                <i class="icon icon-more-vert"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-subtitle text-secondary"><span class="chip bg-gray" *ngFor="let hashtag of voz_thread.hashtags">{{hashtag}}</span></div>
       </div>
       <div class="card-body">
         {{voz_thread.description}}
       </div>
-      <div class="card-footer">
+      <!-- <div class="card-footer">
         <button class="btn btn-primary">...</button>
-      </div>
+        <button class="btn btn-primary float-right"><i class="icon icon-plus"></i></button>
+      </div> -->
     </div>
   </div>
 </div>
