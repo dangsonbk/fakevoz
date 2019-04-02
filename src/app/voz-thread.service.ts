@@ -10,8 +10,10 @@ import { MessageService } from './message.service';
 })
 export class VozThreadService {
 
-  private voz_threads_url = 'https://cors.io/?https://p.voz.vn/feed';
-  private voz_thread_url = 'https://cors.io/?https://p.voz.vn/posts/';
+  // private voz_threads_url = 'https://cors.io/?https://p.voz.vn/feed';
+  // private voz_thread_url = 'https://cors.io/?https://p.voz.vn/posts/';
+  private voz_threads_url = 'https://p.voz.vn/feed';
+  private voz_thread_url = 'https://p.voz.vn/posts/';
   private voz_thread_comment_url = '/comments';
 
   constructor(
